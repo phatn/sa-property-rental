@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: property-rental-web
-          image: phatnguyentan/property-rental-web:1.0.4
+          image: phatnguyentan/property-rental-web:1.0.5
           imagePullPolicy: Always
           envFrom:
             - configMapRef:

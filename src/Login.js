@@ -29,7 +29,12 @@ export default function Login(props) {
             storeToken(response.data.accessToken);
             nav('/property-list');
         }
+    }
 
+    const onKeyPressed = (e) => {
+        if (e.charCode === 13) {
+            login();
+        }
     }
 
     return (
@@ -42,7 +47,7 @@ export default function Login(props) {
                     </div>
 
                     <div className="form-outline mb-4">
-                        <input type="password" name="password" id="form2Example2" className="form-control" onChange={inputChanged}/>
+                        <input type="password" name="password" id="form2Example2" className="form-control" onChange={inputChanged} onKeyPress={onKeyPressed}/>
                         <label className="form-label" htmlFor="form2Example2">Password</label>
                     </div>
 

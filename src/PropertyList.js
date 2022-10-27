@@ -33,11 +33,11 @@ export default function PropertyList(props) {
                         <div className="row-cols-1">
                             <div className="card-header">{p.type}</div>
                             <div className="card-body text-primary">
-                                <h5 className="card-title">Price: ${p.pricePerNight}</h5>
+                                <h5 className="card-title">${p.pricePerNight} night</h5>
                                 <p className="card-text">{p.description}</p>
                                 <p className="card-text">Address: {p.address.street}, {p.address.city}, {p.address.state}, {p.address.zipCode}</p>
                                 {p.available ? <p><button className="btn btn-primary" onClick={() => reserve(p.id)}>Detail</button></p> :
-                                    <p><button className="btn btn-primary" disabled>Reserved</button></p>
+                                    <p><button className="btn btn-secondary" disabled>Reserved</button></p>
                                 }
 
                             </div>
