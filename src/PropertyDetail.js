@@ -24,7 +24,7 @@ export default function PropertyDetail(props) {
 
     const getPaymentTypes = async () => {
         const email = getEmailFromToken();
-        const url  = `${Constants.ACCOUNT_URL}/accounts/${email}`;
+        const url  = `${Constants.BACK_END_URL}/accounts/${email}`;
         const config = {
             headers: {
                 Authorization: 'Bearer ' + getToken()
@@ -50,7 +50,7 @@ export default function PropertyDetail(props) {
                 Authorization: 'Bearer ' + getToken()
             }
         };
-        const url = `${Constants.RESERVATION_URL}/api/reservations`;
+        const url = `${Constants.BACK_END_URL}/api/reservations`;
         const response =  await axios.post(url, reservation, config);
         if(response.data) {
             setReserveText("Reserved");
@@ -66,7 +66,7 @@ export default function PropertyDetail(props) {
     }
 
     const loadProperty = async (id) => {
-        const url = `${Constants.PROPERTY_URL}/properties/${id}`;
+        const url = `${Constants.BACK_END_URL}/properties/${id}`;
         const response = await axios.get(url);
         setProperty(response.data);
     }

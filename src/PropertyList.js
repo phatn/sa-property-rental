@@ -12,7 +12,7 @@ export default function PropertyList(props) {
 
 
     const loadProperties = async () => {
-        const url = `${Constants.PROPERTY_URL}`;
+        const url = `${Constants.BACK_END_URL}`;
         const response = await axios.get(`${url}/properties`);
         setProperties(response.data);
     }
