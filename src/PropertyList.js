@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import './App.css';
 import {useNavigate} from "react-router";
+import Constants from "./Constants";
 
 export default function PropertyList(props) {
 
@@ -9,10 +10,10 @@ export default function PropertyList(props) {
 
     const [properties, setProperties] = useState(null);
 
-    const propertyURL = process.env.REACT_APP_PROPERTY_URL;
 
     const loadProperties = async () => {
-        const response = await axios.get(`${propertyURL}/properties`);
+        const url = `${Constants.PROPERTY_URL}`;
+        const response = await axios.get(`${url}/properties`);
         setProperties(response.data);
     }
 

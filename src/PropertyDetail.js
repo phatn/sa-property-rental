@@ -4,13 +4,10 @@ import axios from "axios";
 import './App.css'
 import {getEmailFromToken, getToken} from './Utils'
 import {Link} from "react-router-dom";
+import Constants from "./Constants";
 
 
 export default function PropertyDetail(props) {
-
-    const accountURL = process.env.REACT_APP_ACCOUNT_URL;
-    const propertyURL = process.env.REACT_APP_PROPERTY_URL;
-    const reservationURL = process.env.REACT_APP_RESERVATION_URL;
 
     const params = useParams();
     const [night, setNight] = useState(1);
@@ -27,7 +24,7 @@ export default function PropertyDetail(props) {
 
     const getPaymentTypes = async () => {
         const email = getEmailFromToken();
-        const url  = `${accountURL}/accounts/${email}`;
+        const url  = `${Constants.ACCOUNT_URL}/accounts/${email}`;
         const config = {
             headers: {
                 Authorization: 'Bearer ' + getToken()
@@ -53,7 +50,7 @@ export default function PropertyDetail(props) {
                 Authorization: 'Bearer ' + getToken()
             }
         };
-        const url = `${reservationURL}/api/reservations`;
+        const url = `${Constants.RESERVATION_URL}/api/reservations`;
         const response =  await axios.post(url, reservation, config);
         if(response.data) {
             setReserveText("Reserved");
@@ -69,7 +66,7 @@ export default function PropertyDetail(props) {
     }
 
     const loadProperty = async (id) => {
-        const url = `${propertyURL}/properties/${id}`;
+        const url = `${Constants.PROPERTY_URL}/properties/${id}`;
         const response = await axios.get(url);
         setProperty(response.data);
     }

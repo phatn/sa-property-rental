@@ -17,6 +17,7 @@ spec:
       containers:
         - name: property-rental-web
           image: phatnguyentan/property-rental-web:1.0.0
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: service-configmap
@@ -25,5 +26,6 @@ spec:
           ports:
             - name: http
               containerPort: 3000
+      restartPolicy: Always
 
 
