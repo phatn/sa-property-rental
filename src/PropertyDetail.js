@@ -84,24 +84,32 @@ export default function PropertyDetail(props) {
                             <p className='property-type'>{property.type}</p>
                             <p className='property-list-link'><Link to='/property-list'>Property List</Link></p>
                         </div>
-                        <div className="card-body text-primary">
-                            <h5 className="card-title">Price: ${property.pricePerNight}</h5>
-                            <p className="card-text">{property.description}</p>
-                            <p className="card-text">Address: {property.address.street}, {property.address.city}, {property.address.state}, {property.address.zipCode}</p>
-                            <p>Night: <input type="number" name="night" onChange={onNightChanged} value={night}/> </p>
-                            <p>Payment Type:
-                                <select name="paymentType" onChange={onPaymentTypeChanged}>
-                                    <option value="SELECT">--Select--</option>
-                                    {!paymentTypes ? null :
-                                        paymentTypes.map(p => {
-                                            return (
-                                                <option key={p} value={p}>{p}</option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                            </p>
-                            <p><button disabled={disabled} className="btn btn-primary" onClick={reserve}>{reserveText}</button></p>
+
+                        <div>
+
+                            <div className="card-body text-primary property-detail">
+                                <h5 className="card-title">${property.pricePerNight} night</h5>
+                                <p className="card-text">{property.description}</p>
+                                <p className="card-text">Address: {property.address.street}, {property.address.city}, {property.address.state}, {property.address.zipCode}</p>
+                                <p>Night: <input type="number" name="night" onChange={onNightChanged} value={night}/> </p>
+                                <p>Payment Type:
+                                    <select name="paymentType" onChange={onPaymentTypeChanged}>
+                                        <option value="SELECT">--Select--</option>
+                                        {!paymentTypes ? null :
+                                            paymentTypes.map(p => {
+                                                return (
+                                                    <option key={p} value={p}>{p}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </p>
+                                <p><button disabled={disabled} className="btn btn-primary btn-detail" onClick={reserve}>{reserveText}</button></p>
+                            </div>
+                            <div className="property-image">
+                                {property.pictures && property.pictures.length > 0 ? <img src={property.pictures[0]} /> : ''}
+                            </div>
+
                         </div>
                 </div>
             }
